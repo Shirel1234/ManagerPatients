@@ -31,6 +31,10 @@
 		}
 		public static bool CheckPhoneNumber(string num)
 		{
+			if (num.Length > 9 || num.Length < 9)
+			{
+				return false;
+			}
 			if (num[0] != '0')
 			{
 				return false;
@@ -65,7 +69,7 @@
 		}
 		public static bool CheckDate(string date)
 		{
-			if (date.Length > 10)
+			if (date.Length > 10 || date.Length<10)
 			{
 				return false;
 			}

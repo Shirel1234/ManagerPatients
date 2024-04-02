@@ -37,14 +37,14 @@ namespace ManagerPatients.Pages.Patient
 				errorMessage = "The Last Name is incorrect.";
 				return;
 			}
-			if (!CheckPhoneNumber(Request.Form["Phone"]))
-			{
-				errorMessage = "The Phone is incorrect.";
-				return;
-			}
 			if (!CheckDate(Request.Form["DateOfBirth"]))
 			{
 				errorMessage = "The Date Of Birth is incorrect.";
+				return;
+			}
+			if (!CheckMobilePhone(Request.Form["MobilePhone"]))
+			{
+				errorMessage = "The Mobile Phone is incorrect.";
 				return;
 			}
 			if (!CheckPhoneNumber(Request.Form["Phone"]))

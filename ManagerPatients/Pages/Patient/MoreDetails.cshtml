@@ -6,7 +6,7 @@
 <h2>More Details Of Patient: @Request.Query["id"] </h2>
 <br />
 <h3>Corona Vaccines</h3>
-<a href="/Patient/CreateVaccine?id=@Request.Query["id"]" onclick="return onCreate()" class="btn btn-primary">Add Vaccine</a>
+<a href="/Patient/CreateVaccine?id=@Request.Query["id"]" onclick="return onCreateV()" class="btn btn-primary">Add Vaccine</a>
 <br />
 <table class="table table-hover">
 	<thead>
@@ -26,7 +26,7 @@
 							<td>@item.VaccineDate.ToShortDateString()</td>
 							<td>@item.VaccineManufacturer</td>
 							<td>
-							<a onclick="return onDeleteVitem.ID', '@item.VaccineDate')" class="btn btn-danger">Delete</a>
+							<a onclick="return onDeleteV('@item.ID', '@item.VaccineDate')" class="btn btn-danger">Delete</a>
 							</td>
 						</tr>
 			}
@@ -74,7 +74,7 @@
 	}
 
 	function onCreateC() {
-		if (@Model.listVaccines.Count <1) {
+		if (@Model.listCorona.Count <1) {
 			return true;
 		}
 		else {
