@@ -39,7 +39,13 @@
 	<div class="row mb-3">
 		<div class="offset-sm-3 col-sm-3 g-grid">
 			<button type="submit" class="btn btn-primary">Submit</button> &nbsp;
-			<button type="submit" class="btn btn-danger">Cancel</button>
+			<button type="button" class="btn btn-danger" onclick="goBack()">Cancel</button>
 		</div>
 	</div>
 </form>
+
+<script>
+	function goBack() {
+		window.history.back();
+	}
+</script>
