@@ -1,0 +1,73 @@
+﻿@page
+@model ManagerPatients.Pages.Patient.CreateModel
+@{
+}
+
+<h2>Add New Patient</h2>
+
+@if(Model.errorMessage.Length > 0)
+{
+	<div class="alert alert-waring alert-dismissible fade show" role="alert">
+       <strong>@Model.errorMessage</strong>
+	   <button type="button" class="btnbtn-close" data-bs-dismiss="alert" aria-label="close"></button>
+	</div>
+}
+
+@if (Model.successMessage.Length > 0)
+{
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		<strong>@Model.successMessage</strong>
+		<button type="button" class="btnbtn-close" data-bs-dismiss="alert" aria-label="close"></button>
+	</div>
+}
+
+<form method="post">
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">ID</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="ID" value="@Model.patient.ID" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">First Name</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="FirstName" value="@Model.patient.FirstName"/>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Last Name</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="LastName" value="@Model.patient.LastName" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Address</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="Address" value="@Model.patient.Address" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Date Of Birth</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="DateOfBirth" value="@Model.patient.DateOfBirth.ToShortDateString()" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Mobile Phone</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="MobilePhone" value="@Model.patient.MobilePhone" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Phone</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="Phone" value="@Model.patient.Phone" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<div class="offset-sm-3 col-sm-3 g-grid">
+			<button type="submit" class="btn btn-primary">Submit</button> &nbsp;
+			<button type="submit" class="btn btn-danger">Cancel</button> 
+		</div>
+	</div>
+</form>

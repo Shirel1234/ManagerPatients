@@ -1,0 +1,45 @@
+﻿@page
+@model ManagerPatients.Pages.Patient.CreateVaccineModel
+@{
+}
+
+<h2>Add A Vaccine</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+	<div class="alert alert-waring alert-dismissible fade show" role="alert">
+		<strong>@Model.errorMessage</strong>
+		<button type="button" class="btnbtn-close" data-bs-dismiss="alert" aria-label="close"></button>
+	</div>
+}
+
+@if (Model.successMessage.Length > 0)
+{
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		<strong>@Model.successMessage</strong>
+		<button type="button" class="btnbtn-close" data-bs-dismiss="alert" aria-label="close"></button>
+	</div>
+}
+
+<form method="post">
+	<input type="hidden" name="hiddenId" value="@Model.vaccine.ID" />
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Vaccine Date</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="VaccineDate" value="@Model.vaccine.VaccineDate.ToShortDateString()" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Vaccine Manufacturer</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="VaccineManufacturer" value="@Model.vaccine.VaccineManufacturer" />
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<div class="offset-sm-3 col-sm-3 g-grid">
+			<button type="submit" class="btn btn-primary">Submit</button> &nbsp;
+			<button type="submit" class="btn btn-danger">Cancel</button>
+		</div>
+	</div>
+</form>

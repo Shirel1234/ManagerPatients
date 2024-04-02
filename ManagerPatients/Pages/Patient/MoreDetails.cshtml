@@ -1,0 +1,99 @@
+﻿@page
+@model ManagerPatients.Pages.Patient.MoreDetailsModel
+@{
+}
+
+<h2>More Details Of Patient: @Request.Query["id"] </h2>
+<br />
+<h3>Corona Vaccines</h3>
+<a href="/Patient/CreateVaccine?id=@Request.Query["id"]" onclick="return onCreate()" class="btn btn-primary">Add Vaccine</a>
+<br />
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<td>ID</td>
+			<td>Vaccine Date</td>
+			<td>Vaccine Manufacturer</td>
+			<td>Delete</td>
+		</tr>
+	</thead>
+	<tbody>
+		@{
+			foreach (var item in Model.listVaccines)
+			{
+						<tr>
+							<td>@item.ID</td>
+							<td>@item.VaccineDate.ToShortDateString()</td>
+							<td>@item.VaccineManufacturer</td>
+							<td>
+							<a onclick="return onDeleteVitem.ID', '@item.VaccineDate')" class="btn btn-danger">Delete</a>
+							</td>
+						</tr>
+			}
+		}
+	</tbody>
+</table>
+<h3>Positive for Corona</h3>
+<a href="/Patient/CreateCorona?id=@Request.Query["id"]" onclick="return onCreateC()" class="btn btn-primary">Add Corona</a>
+<br />
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<td>ID</td>
+			<td>Positive Date</td>
+			<td>Recovery Date</td>
+			<td>Delete</td>
+		</tr>
+	</thead>
+	<tbody>
+		@{
+			foreach (var item in Model.listCorona)
+			{
+				<tr>
+					<td>@item.ID</td>
+				<td>@item.PositiveDate.ToShortDateString()</td>
+		    	<td>@item.RecoveryDate.ToShortDateString()</td>
+				<td>
+					<a onclick="return onDeleteC('@item.ID', '@item.PositiveDate')" class="btn btn-danger">Delete</a>
+				</td>
+			</tr>
+			}
+		}
+	</tbody>
+</table>
+
+<script>
+	function onCreateV() {
+		if (@Model.listVaccines.Count <4) {
+			return true;
+		}
+		else {
+			alert("Cannot add a new vaccine. There are already four");
+			return false;
+		}
+	}
+
+	function onCreateC() {
+		if (@Model.listVaccines.Count <1) {
+			return true;
+		}
+		else {
+			alert("Cannot add a new corona. There is already one");
+			return false;
+		}
+	}
+
+	function onDeleteV(id, vaccineDate) {
+		if (window.confirm("Are you sure to delete the record vaccine?"))
+		{
+			window.location.href = "/Patient/DeleteVaccine?id=" + id + "&vaccineDate=" + vaccineDate;
+		}
+	}
+
+	function onDeleteC(id, positiveDate) {
+		if (window.confirm("Are you sure to delete the record corona?")) {
+			window.location.href = "/Patient/DeleteCorona?id=" + id + "&positiveDate=" + positiveDate;
+		}
+	}
+</script>
+

@@ -1,0 +1,16 @@
+﻿@page 
+@using System.Data.SqlClient;
+@using ManagerPatients.Model;
+@inject IConfiguration configuration;
+@{
+	try{
+		DAL dal = new DAL();
+		string id = Request.Query["id"];
+		dal.DeletePatient(id, configuration);
+	}
+	catch(Exception)
+	{
+
+	}
+	Response.Redirect("/Patient/Index");
+}

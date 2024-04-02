@@ -1,0 +1,46 @@
+﻿@page
+@model ManagerPatients.Pages.Patient.CreateCoronaModel
+@{
+}
+
+<h2>Add A Corona</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+	<div class="alert alert-waring alert-dismissible fade show" role="alert">
+		<strong>@Model.errorMessage</strong>
+		<button type="button" class="btnbtn-close" data-bs-dismiss="alert" aria-label="close"></button>
+	</div>
+}
+
+@if (Model.successMessage.Length > 0)
+{
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		<strong>@Model.successMessage</strong>
+		<button type="button" class="btnbtn-close" data-bs-dismiss="alert" aria-label="close"></button>
+	</div>
+}
+
+<form method="post">
+	<input type="hidden" name="hiddenId" value="@Model.corona.ID" />
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Positive Date</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="PositiveDate" value="@Model.corona.PositiveDate.ToShortDateString()" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Recovery Date </label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" name="RecoveryDate" value="@Model.corona.RecoveryDate.ToShortDateString()" />
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<div class="offset-sm-3 col-sm-3 g-grid">
+			<button type="submit" class="btn btn-primary">Submit</button> &nbsp;
+			<button type="submit" class="btn btn-danger">Cancel</button>
+		</div>
+	</div>
+</form>
+
